@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Reports — SpotFix</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="reports.css">
+</head>
+
+<body>
+
+<main class="app">
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+    <header class="page-header">
+
+        <a
+            href="home.html"
+            class="back-button"
+            aria-label="Back to Home">
+            ←
+        </a>
+
+        <div class="page-heading">
+            <p class="section-kicker">YOUR ACTIVITY</p>
+            <h1>My Reports</h1>
+        </div>
+
+        <button
+            id="reportsNotificationButton"
+            class="header-icon"
+            type="button"
+            aria-label="Notifications">
+            🔔
+            <span class="notification-badge">3</span>
+        </button>
+
+    </header>
+
+
+    <!-- =====================================================
+         WEEKLY REMINDER / PENDING NOTICE
+    ====================================================== -->
+    <section
+        id="pendingReminder"
+        class="reminder-card"
+        hidden>
+
+        <div class="reminder-icon">
+            ⏰
+        </div>
+
+        <div class="reminder-content">
+
+            <strong>
+                A quick check-in
+            </strong>
+
+            <p>
+                You have a pending report. Is the issue still there?
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         REPORT SUMMARY
+    ====================================================== -->
+    <section class="summary-strip">
+
+        <div class="summary-item">
+            <strong id="totalReports">0</strong>
+            <span>Total</span>
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-item">
+            <strong id="pendingReports">0</strong>
+            <span>Pending</span>
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-item">
+            <strong id="resolvedReports">0</strong>
+            <span>Resolved</span>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         JUST SUBMITTED
+    ====================================================== -->
+    <section class="report-section">
+
+        <div class="section-header">
+            <div>
+                <p class="section-kicker">RECENTLY CREATED</p>
+                <h2>Just Submitted</h2>
+            </div>
+        </div>
+
+        <div
+            id="justSubmittedList"
+            class="report-list">
+        </div>
+
+        <div
+            id="justSubmittedEmpty"
+            class="empty-state"
+            hidden>
+
+            <div class="empty-state-icon">
+                📋
+            </div>
+
+            <strong>
+                No reports yet
+            </strong>
+
+            <p>
+                Choose an issue category on Home to submit your first report.
+            </p>
+
+            <a
+                href="home.html"
+                class="empty-action">
+                Report an issue
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         EARLIER REPORTS
+    ====================================================== -->
+    <section class="report-section">
+
+        <div class="section-header">
+            <div>
+                <p class="section-kicker">YOUR HISTORY</p>
+                <h2>Earlier Reports</h2>
+            </div>
+        </div>
+
+        <div
+            id="earlierReportsList"
+            class="report-list">
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         REPORT DETAIL / STATUS SHEET
+         JS will fill this when a report is selected.
+    ====================================================== -->
+    <div
+        id="reportDetailModal"
+        class="modal"
+        hidden>
+
+        <div
+            id="reportDetailBackdrop"
+            class="modal-backdrop">
+        </div>
+
+        <section
+            class="detail-sheet"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="detailTitle">
+
+            <button
+                id="closeDetail"
+                class="close-button"
+                type="button"
+                aria-label="Close">
+                ×
+            </button>
+
+            <p class="section-kicker">
+                REPORT DETAILS
+            </p>
+
+            <h2 id="detailTitle">
+                Report
+            </h2>
+
+            <div
+                id="detailContent"
+                class="detail-content">
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =====================================================
+         DELETE CONFIRMATION
+    ====================================================== -->
+    <div
+        id="deleteModal"
+        class="modal"
+        hidden>
+
+        <div
+            id="deleteBackdrop"
+            class="modal-backdrop">
+        </div>
+
+        <section
+            class="confirm-sheet"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="deleteTitle">
+
+            <div class="confirm-icon">
+                🗑️
+            </div>
+
+            <h2 id="deleteTitle">
+                Delete this report?
+            </h2>
+
+            <p>
+                This removes the report from your SpotFix demo history.
+            </p>
+
+            <div class="confirm-actions">
+
+                <button
+                    id="cancelDelete"
+                    class="secondary-button"
+                    type="button">
+                    Keep it
+                </button>
+
+                <button
+                    id="confirmDelete"
+                    class="danger-button"
+                    type="button">
+                    Delete
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =====================================================
+         BOTTOM NAVIGATION
+    ====================================================== -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+
+        <a
+            class="nav-item"
+            href="home.html"
+            data-nav="home">
+
+            <span class="nav-icon">
+                ⌂
+            </span>
+
+            <span>
+                Home
+            </span>
+
+        </a>
+
+
+        <a
+            class="nav-item"
+            href="home.html#mapSection"
+            data-nav="map">
+
+            <span class="nav-icon">
+                ◈
+            </span>
+
+            <span>
+                Map
+            </span>
+
+        </a>
+
+
+        <a
+            class="nav-item active"
+            href="reports.html"
+            data-nav="reports">
+
+            <span class="nav-icon">
+                ▤
+            </span>
+
+            <span>
+                My Reports
+            </span>
+
+        </a>
+
+
+        <a
+            class="nav-item"
+            href="profile.html"
+            data-nav="profile">
+
+            <span class="nav-icon">
+                ♙
+            </span>
+
+            <span>
+                Profile
+            </span>
+
+        </a>
+
+    </nav>
+
+</main>
+
+
+<script src="reports.js"></script>
+
+</body>
+</html>

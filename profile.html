@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile — SpotFix</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="profile.css">
+</head>
+
+<body>
+
+<main class="app">
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="page-header">
+
+        <a
+            href="home.html"
+            class="back-button"
+            aria-label="Back to Home">
+            ←
+        </a>
+
+        <div class="page-heading">
+
+            <p class="section-kicker">
+                YOUR ACCOUNT
+            </p>
+
+            <h1>
+                Profile
+            </h1>
+
+        </div>
+
+        <button
+            id="settingsButton"
+            class="header-icon"
+            type="button"
+            aria-label="Settings">
+            ⚙️
+        </button>
+
+    </header>
+
+
+    <!-- =====================================================
+         PROFILE CARD
+    ====================================================== -->
+
+    <section class="profile-card">
+
+        <div class="avatar-wrap">
+
+            <div
+                class="avatar"
+                id="avatarPreview">
+
+                <span id="avatarInitials">
+                    C
+                </span>
+
+            </div>
+
+            <button
+                id="avatarEditButton"
+                class="avatar-edit"
+                type="button"
+                aria-label="Change profile photo">
+
+                📷
+
+            </button>
+
+            <input
+                type="file"
+                id="avatarInput"
+                accept="image/*"
+                hidden>
+
+        </div>
+
+
+        <h2
+            id="profileName"
+            class="profile-name">
+
+            Citizen User
+
+        </h2>
+
+
+        <p
+            id="profileEmail"
+            class="profile-email">
+
+            citizen@spotfix.app
+
+        </p>
+
+
+        <button
+            id="editProfileButton"
+            class="profile-edit-button"
+            type="button">
+
+            Edit Profile
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROFILE STATS
+    ====================================================== -->
+
+    <section class="profile-stats">
+
+        <div class="stat-card">
+
+            <div
+                class="stat-number"
+                id="reportsCount">
+                0
+            </div>
+
+            <div class="stat-label">
+                Submitted
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div
+                class="stat-number"
+                id="resolvedCount">
+                0
+            </div>
+
+            <div class="stat-label">
+                Resolved
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div
+                class="stat-number"
+                id="pointsCount">
+                0
+            </div>
+
+            <div class="stat-label">
+                Points
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ACCOUNT OPTIONS
+         My Reports is intentionally NOT repeated here.
+    ====================================================== -->
+
+    <section class="profile-group">
+
+        <div class="profile-group-label">
+            Account
+        </div>
+
+
+        <button
+            id="notificationsButton"
+            class="profile-option"
+            type="button">
+
+            <div class="profile-option-icon">
+                🔔
+            </div>
+
+            <div class="profile-option-text">
+
+                <div class="profile-option-title">
+                    Notifications
+                </div>
+
+                <div class="profile-option-sub">
+                    Manage report updates and reminders
+                </div>
+
+            </div>
+
+            <span class="profile-option-chevron">
+                ›
+            </span>
+
+        </button>
+
+
+        <button
+            id="privacyButton"
+            class="profile-option"
+            type="button">
+
+            <div class="profile-option-icon">
+                🔒
+            </div>
+
+            <div class="profile-option-text">
+
+                <div class="profile-option-title">
+                    Privacy &amp; Permissions
+                </div>
+
+                <div class="profile-option-sub">
+                    Location access and local app data
+                </div>
+
+            </div>
+
+            <span class="profile-option-chevron">
+                ›
+            </span>
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         SUPPORT OPTIONS
+    ====================================================== -->
+
+    <section class="profile-group">
+
+        <div class="profile-group-label">
+            Support
+        </div>
+
+
+        <button
+            id="helpButton"
+            class="profile-option"
+            type="button">
+
+            <div class="profile-option-icon">
+                ?
+            </div>
+
+            <div class="profile-option-text">
+
+                <div class="profile-option-title">
+                    Help &amp; Support
+                </div>
+
+                <div class="profile-option-sub">
+                    FAQs and contact us
+                </div>
+
+            </div>
+
+            <span class="profile-option-chevron">
+                ›
+            </span>
+
+        </button>
+
+
+        <button
+            id="aboutButton"
+            class="profile-option"
+            type="button">
+
+            <div class="profile-option-icon">
+                ℹ
+            </div>
+
+            <div class="profile-option-text">
+
+                <div class="profile-option-title">
+                    About SpotFix
+                </div>
+
+                <div class="profile-option-sub">
+                    Spot it. Fix it.
+                </div>
+
+            </div>
+
+            <span class="profile-option-chevron">
+                ›
+            </span>
+
+        </button>
+
+
+        <button
+            id="signOutButton"
+            class="profile-option danger"
+            type="button">
+
+            <div class="profile-option-icon">
+                ↪
+            </div>
+
+            <div class="profile-option-text">
+
+                <div class="profile-option-title">
+                    Sign Out
+                </div>
+
+                <div class="profile-option-sub">
+                    Return to the SpotFix welcome screen
+                </div>
+
+            </div>
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         INFO MODAL
+    ====================================================== -->
+
+    <div
+        id="infoModal"
+        class="modal"
+        hidden>
+
+        <div
+            id="infoBackdrop"
+            class="modal-backdrop">
+        </div>
+
+        <section
+            class="info-sheet"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="infoTitle">
+
+            <button
+                id="closeInfo"
+                class="close-button"
+                type="button"
+                aria-label="Close">
+                ×
+            </button>
+
+            <p class="section-kicker">
+                SPOTFIX
+            </p>
+
+            <h2 id="infoTitle">
+                Information
+            </h2>
+
+            <div id="infoContent">
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =====================================================
+         EDIT PROFILE MODAL
+    ====================================================== -->
+
+    <div
+        id="editProfileModal"
+        class="modal"
+        hidden>
+
+        <div
+            id="editBackdrop"
+            class="modal-backdrop">
+        </div>
+
+        <section
+            class="edit-sheet"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="editProfileTitle">
+
+            <button
+                id="closeEditProfile"
+                class="close-button"
+                type="button"
+                aria-label="Close">
+                ×
+            </button>
+
+            <p class="section-kicker">
+                YOUR DETAILS
+            </p>
+
+            <h2 id="editProfileTitle">
+                Edit Profile
+            </h2>
+
+            <label for="editName">
+                Name
+            </label>
+
+            <input
+                id="editName"
+                type="text"
+                placeholder="Your name">
+
+            <label for="editEmail">
+                Email
+            </label>
+
+            <input
+                id="editEmail"
+                type="email"
+                placeholder="you@example.com">
+
+            <button
+                id="saveProfileButton"
+                class="save-button"
+                type="button">
+                Save changes
+            </button>
+
+        </section>
+
+    </div>
+
+
+    <!-- =====================================================
+         BOTTOM NAVIGATION
+    ====================================================== -->
+
+    <nav
+        class="bottom-nav"
+        aria-label="Main navigation">
+
+        <a
+            class="nav-item"
+            href="home.html"
+            data-nav="home">
+
+            <span class="nav-icon">
+                ⌂
+            </span>
+
+            <span>
+                Home
+            </span>
+
+        </a>
+
+
+        <a
+            class="nav-item"
+            href="home.html#mapSection"
+            data-nav="map">
+
+            <span class="nav-icon">
+                ◈
+            </span>
+
+            <span>
+                Map
+            </span>
+
+        </a>
+
+
+        <a
+            class="nav-item"
+            href="reports.html"
+            data-nav="reports">
+
+            <span class="nav-icon">
+                ▤
+            </span>
+
+            <span>
+                My Reports
+            </span>
+
+        </a>
+
+
+        <a
+            class="nav-item active"
+            href="profile.html"
+            data-nav="profile">
+
+            <span class="nav-icon">
+                ♙
+            </span>
+
+            <span>
+                Profile
+            </span>
+
+        </a>
+
+    </nav>
+
+</main>
+
+
+<script src="profile.js"></script>
+
+</body>
+</html>

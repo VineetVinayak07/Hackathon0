@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account — SpotFix</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Kalam:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+
+<main class="auth-app auth-form-app">
+
+    <!-- BRAND -->
+
+    <header class="brand">
+
+        <img
+            src="spotfix-logo.png"
+            alt="SpotFix logo"
+            class="brand-logo"
+        >
+
+        <div>
+
+            <div class="brand-name">
+                SpotFix
+            </div>
+
+            <div class="brand-tagline">
+                Spot it. Fix it.
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- BACK -->
+
+    <a href="index.html" class="back-link">
+        ← Back
+    </a>
+
+
+    <!-- SIGNUP -->
+
+    <section class="form-section">
+
+        <p class="small-label">
+            JOIN SPOTFIX
+        </p>
+
+        <h1>
+            Create account
+        </h1>
+
+        <p class="form-subtitle">
+            Create your account and start reporting civic issues.
+        </p>
+
+
+        <form id="signupForm">
+
+            <!-- NAME -->
+
+            <label for="name">
+                Full name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Your name"
+                autocomplete="name"
+                required
+            >
+
+
+            <!-- EMAIL -->
+
+            <label for="email">
+                Email address
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+            >
+
+
+            <!-- PASSWORD -->
+
+            <label for="password">
+                Password
+            </label>
+
+            <div class="password-field">
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="At least 6 characters"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="show-password"
+                    data-target="password"
+                >
+                    Show
+                </button>
+
+            </div>
+
+
+            <!-- CONFIRM PASSWORD -->
+
+            <label for="confirmPassword">
+                Confirm password
+            </label>
+
+            <div class="password-field">
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Repeat your password"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="show-password"
+                    data-target="confirmPassword"
+                >
+                    Show
+                </button>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <p
+                id="message"
+                class="form-message"
+                aria-live="polite"
+            ></p>
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                class="primary-btn form-button"
+            >
+                Create account
+            </button>
+
+        </form>
+
+
+        <!-- SWITCH -->
+
+        <p class="switch-text">
+
+            Already have an account?
+
+            <a href="login.html">
+                Log in
+            </a>
+
+        </p>
+
+    </section>
+
+</main>
+
+
+<script src="auth.js"></script>
+
+</body>
+</html>

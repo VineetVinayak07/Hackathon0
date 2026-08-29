@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in — SpotFix</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+    <main class="auth-app auth-form-app">
+
+        <header class="brand">
+            <img src="spotfix-logo.png" alt="SpotFix logo" class="brand-logo">
+            <div>
+                <div class="brand-name">SpotFix</div>
+                <div class="brand-tagline">Spot it. Fix it.</div>
+            </div>
+        </header>
+
+        <a href="index.html" class="back-link">← Back</a>
+
+        <section class="form-section">
+            <p class="small-label">WELCOME BACK</p>
+            <h1>Log in</h1>
+            <p class="form-subtitle">Continue to your SpotFix dashboard.</p>
+
+            <form id="loginForm">
+
+                <label for="email">Email address</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                >
+
+                <label for="password">Password</label>
+                <div class="password-field">
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+                    <button type="button" class="show-password" data-target="password">Show</button>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-row">
+                        <input type="checkbox" id="remember">
+                        <span>Remember me</span>
+                    </label>
+
+                    <button type="button" id="forgotPassword" class="text-button">
+                        Forgot password?
+                    </button>
+                </div>
+
+                <p id="message" class="form-message" aria-live="polite"></p>
+
+                <button type="submit" class="primary-btn form-button">
+                    Log in
+                </button>
+            </form>
+
+            <p class="switch-text">
+                Don't have an account?
+                <a href="signup.html">Sign up</a>
+            </p>
+        </section>
+    </main>
+
+    <script src="auth.js"></script>
+</body>
+</html>

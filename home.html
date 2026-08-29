@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpotFix — Home</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+<main class="app">
+
+    <!-- HEADER -->
+    <header class="app-header">
+        <button id="menuButton" class="icon-button" type="button" aria-label="Open menu">☰</button>
+
+        <a href="home.html" class="header-brand">
+            <img src="spotfix-logo.png" alt="SpotFix logo" class="header-logo">
+            <span>SpotFix</span>
+        </a>
+
+        <button id="notificationButton" class="icon-button notification-button" type="button" aria-label="Notifications">
+            🔔
+            <span class="notification-badge">3</span>
+        </button>
+    </header>
+
+    <!-- GREETING -->
+    <section class="greeting">
+        <p class="eyebrow">YOUR COMMUNITY</p>
+        <h1>Hello, <span id="userName">Citizen</span>! 👋</h1>
+        <p>Spot it. Fix it. Help make your city better.</p>
+    </section>
+
+    <!-- QUICK REPORT CATEGORIES -->
+    <section class="section">
+        <div class="section-header">
+            <div>
+                <p class="section-kicker">REPORT FAST</p>
+                <h2>What did you spot?</h2>
+            </div>
+
+            <button id="viewAllCategories" class="text-button" type="button">
+                View all
+            </button>
+        </div>
+
+        <div class="category-grid">
+            <button class="category-card" data-type="Pothole" type="button">
+                <span class="category-icon pothole">🕳️</span>
+                <span>Pothole</span>
+            </button>
+
+            <button class="category-card" data-type="Garbage" type="button">
+                <span class="category-icon garbage">🗑️</span>
+                <span>Garbage</span>
+            </button>
+
+            <button class="category-card" data-type="Streetlight" type="button">
+                <span class="category-icon streetlight">💡</span>
+                <span>Streetlight</span>
+            </button>
+
+            <button class="category-card" data-type="Other" type="button">
+                <span class="category-icon other">✦</span>
+                <span>Other</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ISSUE RANGE -->
+    <section class="section range-section">
+        <div class="section-header">
+            <div>
+                <p class="section-kicker">EXPLORE THE AREA</p>
+                <h2>Issue Range</h2>
+            </div>
+
+            <span id="rangeLabel" class="range-label">10 km</span>
+        </div>
+
+        <div id="rangeOptions" class="range-options" role="group" aria-label="Choose issue range">
+            <button class="range-option" data-radius="2000" type="button">2 km</button>
+            <button class="range-option" data-radius="5000" type="button">5 km</button>
+            <button class="range-option active" data-radius="10000" type="button">10 km</button>
+            <button class="range-option" data-radius="15000" type="button">15 km</button>
+            <button class="range-option" data-radius="20000" type="button">20 km</button>
+            <button class="range-option" data-radius="25000" type="button">25 km</button>
+        </div>
+
+        <p class="range-help">
+            Choose how far around your location you want to explore.
+        </p>
+    </section>
+
+    <!-- MAP -->
+    <section class="section map-section" id="mapSection">
+        <div class="section-header">
+            <div>
+                <p class="section-kicker">LIVE MAP</p>
+                <h2>Issues in your range</h2>
+            </div>
+
+            <button
+                id="locationButton"
+                class="location-button"
+                type="button"
+                title="Use my location"
+                aria-label="Use my current location">
+                ◎
+            </button>
+        </div>
+
+        <div class="map-card">
+            <div id="map" aria-label="SpotFix civic issue map"></div>
+
+            <!-- General report action.
+                 Category cards above are quick-access reporting.
+                 This is the catch-all report option. -->
+            <button
+                id="mapReportButton"
+                class="map-report-button"
+                type="button"
+                aria-label="Report another issue">
+                <span>+</span>
+                <strong>Report</strong>
+            </button>
+        </div>
+
+        <div class="map-legend">
+            <span><i class="legend-dot user"></i>Your location</span>
+            <span><i class="legend-dot issue"></i>Reported issue</span>
+            <span><i class="legend-radius"></i>Selected range</span>
+        </div>
+    </section>
+
+    <!-- ISSUES IN SELECTED RANGE -->
+    <section class="section issues-section">
+        <div class="section-header">
+            <div>
+                <p class="section-kicker">COMMUNITY REPORTS</p>
+                <h2 id="issuesTitle">Issues within 10 km</h2>
+            </div>
+
+            <button id="viewAllIssues" class="text-button" type="button">
+                View all
+            </button>
+        </div>
+
+        <div id="issueList" class="issue-list"></div>
+
+        <div id="emptyState" class="empty-state" hidden>
+            <div class="empty-state-icon">🗺️</div>
+            <h3>No issues in this range</h3>
+            <p>Try a larger range or report the first issue in this area.</p>
+        </div>
+    </section>
+
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+        <a class="nav-item active" href="home.html" data-nav="home">
+            <span class="nav-icon">⌂</span>
+            <span>Home</span>
+        </a>
+
+        <a class="nav-item" href="home.html#mapSection" data-nav="map">
+            <span class="nav-icon">◈</span>
+            <span>Map</span>
+        </a>
+
+        <a class="nav-item" href="reports.html" data-nav="reports">
+            <span class="nav-icon">▤</span>
+            <span>My Reports</span>
+        </a>
+
+        <a class="nav-item" href="profile.html" data-nav="profile">
+            <span class="nav-icon">♙</span>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <!-- REPORT MODAL -->
+    <div id="reportModal" class="modal" hidden>
+        <div id="modalBackdrop" class="modal-backdrop"></div>
+
+        <section class="report-sheet" role="dialog" aria-modal="true" aria-labelledby="reportModalTitle">
+            <div class="modal-handle"></div>
+
+            <button id="closeReport" class="close-button" type="button" aria-label="Close report form">×</button>
+
+            <p class="section-kicker">MAKE A REPORT</p>
+            <h2 id="reportModalTitle">Report an issue</h2>
+
+            <p class="modal-subtitle">
+                Add enough information for the community to understand what you spotted.
+            </p>
+
+            <label for="issueType">Issue type</label>
+            <select id="issueType">
+                <option value="Pothole">Pothole</option>
+                <option value="Garbage">Garbage</option>
+                <option value="Streetlight">Streetlight</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="issuePhoto">Photo</label>
+
+            <label for="issuePhoto" class="photo-box">
+                <span class="photo-icon">📷</span>
+
+                <span class="photo-copy">
+                    <strong>Add a photo</strong>
+                    <small>Use a photo from your device.</small>
+                </span>
+
+                <span class="photo-plus">+</span>
+            </label>
+
+            <input id="issuePhoto" type="file" accept="image/*" hidden>
+
+            <div id="photoPreview" class="photo-preview" hidden></div>
+
+            <label for="description">Description</label>
+
+            <textarea
+                id="description"
+                maxlength="300"
+                rows="4"
+                placeholder="Describe what you spotted..."
+            ></textarea>
+
+            <label>Location</label>
+
+            <button id="reportLocationButton" class="report-location" type="button">
+                <span class="location-icon">📍</span>
+
+                <span>
+                    <strong id="locationTitle">Use my current location</strong>
+                    <small id="locationSubtitle">GPS coordinates will be attached.</small>
+                </span>
+            </button>
+
+            <button id="submitReport" class="submit-button" type="button">
+                Submit report
+            </button>
+        </section>
+    </div>
+
+    <!-- INFO MODAL -->
+    <div id="infoModal" class="modal" hidden>
+        <div class="modal-backdrop" data-close-info></div>
+
+        <section class="info-sheet" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+            <button id="closeInfo" class="close-button" type="button" aria-label="Close">×</button>
+
+            <p class="section-kicker">SPOTFIX</p>
+            <h2 id="infoTitle">Information</h2>
+
+            <div id="infoContent"></div>
+        </section>
+    </div>
+
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="home.js"></script>
+
+</body>
+</html>
